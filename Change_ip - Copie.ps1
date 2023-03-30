@@ -67,9 +67,7 @@ while ($true) {
             if ($sent -gt $Debit_max -and $received -gt $Debit_max) {    
                 New-NetIPAddress –InterfaceIndex 12 –IPAddress ($IP_arriver + $compteur) –PrefixLength 24 -DefaultGateway $gateway
                 $compteur += 1
-                Add-Type -AssemblyName System.Windows.Forms
-                [System.Windows.Forms.MessageBox]::Show('Votre wifi à changer pour avoir un meilleur débit. Si votre vous êtes en train de télécharger une pièce sur internet alors relancé le téléchargement', 'Message Box Title', 'OK', 'Information')
-
+                
             }
         }
         # Si aucune carte réseau WiFi n'est trouvée, force les informations à null
