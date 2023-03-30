@@ -5,7 +5,7 @@ $Debit_max = 10000000
 
 
 # Boucle infinie
-while($true)
+while($true) /////
 {
     # Récupère la première interface réseau "Ethernet" et "connecté"
     $interface_wifi = ([System.Net.NetworkInformation.Networkinterface]::GetAllNetworkInterfaces()) | Where-Object {$_.NetworkInterfaceType -eq [System.Net.NetworkInformation.NetworkInterfaceType]::Wireless80211 -and $_.OperationalStatus -eq [System.Net.NetworkInformation.OperationalStatus]::Up} | Select-Object -First 1
