@@ -1,10 +1,11 @@
 $ssid = "ISI_Etudiants"
-$securityKey = "KhDGio!45d "
-$Debit_max = 9 # chiffre maximum que le réseaux ne doit pas dépasser autrement l'appareil sera changé de wifi 
-$message_interface_wifi_up = "Votre wifi à changé pour avoir un meilleur débit si vous avez lancé un téléchargement sur internet il faut le relancé Bonne journée.          L'admini sys"
-$message_interface_wifi_down = "votre wifi est deésactivé pour que le script fonction il faut activé le wifi. Admini sys "
+$securityKey = "KhDGio!45d"
+$Debit_max = 9 
+$message_interface_wifi_up = "Votre wifi à changé pour avoir un meilleur débit si vous avez lancé un téléchargement sur internet il faut le relancé Bonne journée.          L'admin sys"
+$message_interface_wifi_down = "votre wifi est désactivé pour que le script fonction il faut activé le wifi. Admin sys "
 
 
+Set-NetIPInterface -InterfaceIndex 12 -Dhcp Disabled
 # Boucle infinie
 while ($true) {
     # Récupère la première interface réseau "wirless" et "connecté"
@@ -41,17 +42,13 @@ while ($true) {
         # vers un wifi plus performant
         
         if ( $Affichage_debit -gt $Debit_max ) {  
-            
-            # Créer un profil réseau pour le SSID spécifié
-            Add-WifiProfile  -SSID $ssid -KeyMaterial $securityKey
 
-            # Se connecter au réseau Wi-Fi
+            Disconnect-Wifi
+            Add-WifiProfile -SSID $ssid -KeyMaterial $securityKey
             Connect-Wifi -SSID $ssid
-            $compteur++
             $shell = new-object -com wscript.shell
             $shell.popup("$message_interface_wifi_up")
         }
-        
 
     }
     # Si pas de carte réseau trouvé on force les informations à null
