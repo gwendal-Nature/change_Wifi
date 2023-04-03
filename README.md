@@ -10,9 +10,10 @@ To configure the script, you need to modify the $ssid and $securityKey variables
 
 To use the script, open PowerShell and execute the script by typing:
 
-``Powershell
-.\auto-wifi.ps1``
-
+Go to the folder where you put the script and execute
+``.\change_ip_fr.ps1``
+or
+``.\change_ip_EN.ps1``
 The script will start measuring the bandwidth of your primary WiFi connection. If the speed is below the defined limit, the script will automatically switch to another WiFi connection.
 
 # **Warnings**
