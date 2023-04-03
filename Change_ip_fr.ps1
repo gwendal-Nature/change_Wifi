@@ -1,5 +1,5 @@
-$ssid = "le nom du wifi"
-$securityKey = "votre mot de passe"
+$ssid = "le nom du wifi" # SSID du wifi que vous voulez rejoindre
+$securityKey = "votre mot de passe" # Mot de passe de ce wifi ciblé
 $Debit_max = 9 
 $message_interface_wifi_up = "Votre wifi à changé pour avoir un meilleur débit si vous avez lancé un téléchargement sur internet il faut le relancé Bonne journée.          L'admin sys"
 $message_interface_wifi_down = "votre wifi est désactivé pour que le script fonction il faut activé le wifi. Admin sys "
@@ -15,7 +15,7 @@ while ($true) {
     if ($null -ne $interface_wifi) {
         
 
-    # Récupère les informations
+        # Récupère les informations
         $interface_recupe = $interface_wifi.id
         $ipstat_New = $interface_wifi.GetIPStatistics()
         $date = Get-Date
