@@ -1,11 +1,9 @@
-$ssid = "le nom du wifi" # SSID du wifi que vous voulez rejoindre
-$securityKey = "votre mot de passe" # Mot de passe de ce wifi ciblé
-$Debit_max = 9 
+$ssid = "WIFI_ETUDIANTS" # SSID du wifi que vous voulez rejoindre
+$name = "WIFI_ETUDIANTS" # nom du profile wifi
+$Debit_max = 8
 $message_interface_wifi_up = "Votre wifi à changé pour avoir un meilleur débit si vous avez lancé un téléchargement sur internet il faut le relancé Bonne journée.          L'admin sys"
 $message_interface_wifi_down = "votre wifi est désactivé pour que le script fonction il faut activé le wifi. Admin sys "
 
-
-Set-NetIPInterface -InterfaceIndex 12 -Dhcp Disabled
 # Boucle infinie
 while ($true) {
     # Récupère la première interface réseau "wirless" et "connecté"
@@ -44,10 +42,10 @@ while ($true) {
         if ( $Affichage_debit -gt $Debit_max ) {  
 
             Disconnect-Wifi
-            Add-WifiProfile -SSID $ssid -KeyMaterial $securityKey
-            Connect-Wifi -SSID $ssid
+            netsh wlan connect name=$name ssid=$ssid
             $shell = new-object -com wscript.shell
             $shell.popup("$message_interface_wifi_up")
+            exit
         }
 
     }
